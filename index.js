@@ -1,22 +1,26 @@
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+  
+  let sum = [];
+
+  let hashTable = {};
+
+  for (let x = 0; x < array.length; x++) {
+      let sumMinus = target - array[x];
+
+      if (hashTable[sumMinus.toString()] !== undefined) {
+          sum.push([array[x]], sumMinus);
+          return true;
+
+
+      }
+      hashTable[array[x].toString()] = array[x];
+  }
+  return false;
 }
+hasTargetSum([3, 8, 12, 4, 11, 7], 10);
 
-/* 
-  Write the Big O time complexity of your function here
-*/
-
-/* 
-  Add your pseudocode here
-*/
-
-/*
-  Add written explanation of your solution here
-*/
-
-// You can run `node index.js` to view these console logs
 if (require.main === module) {
-  // add your own custom tests in here
+  
   console.log("Expecting: true");
   console.log("=>", hasTargetSum([3, 8, 12, 4, 11, 7], 10));
 
